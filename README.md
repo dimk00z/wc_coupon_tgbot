@@ -13,3 +13,5 @@ WC_SECRET_KEY=
 WC_URL=
 
 ```
+`cp tgbot.service /etc/systemd/system` - copy service file
+` systemctl start tgbot` - start service
