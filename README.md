@@ -1,2 +1,15 @@
-# wc_coupon_tgbot
- Telegram bot for generation coupons with rest api
+# Woocommerce coupon bot
+
+## Description
+
+This is small app for creating coupons on woocommerce site with telegram
+
+.env must have these parameters:
+```
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_USERS_ID=id,id2...
+WC_USER_KEY=
+WC_SECRET_KEY=
+WC_URL=
+
+```

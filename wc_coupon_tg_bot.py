@@ -3,6 +3,7 @@ import logging
 
 from utils.env import load_params
 from utils.wccoupon import get_coupon
+from pathlib import Path
 
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
@@ -23,6 +24,10 @@ class TGCouponBot(object):
         """Send a message when the command /start is issued."""
         update.message.reply_text("Hi! I'm coupon bot=)")
 
+    def load_message_template(self, file_name='message_template.txt') -> str:
+        with open(Path('.') / file_name) as template_file:
+            return template_file.read()
+
     def send_coupon(self, update: Update,
                     context: CallbackContext) -> None:
         """Echo the user message."""
@@ -32,9 +37,10 @@ class TGCouponBot(object):
                 wc_secret_key=self.wc_secret_key,
                 wc_url=self.wc_url,
                 message=update.message.text)
-            message = f'''{update.message.text}, для Вас выпущен купон на 10% скидку, который действителен в течение месяца на моем сайте https://4languagetutors.ru/irene_books/.
-Код купона: {coupon}
-Не забудьте применить его на сайте в корзине.'''
+            order_info = {
+                'customer': update.message.text,
+                'coupon': coupon}
+            message = self.load_message_template().format(**order_info)
             update.message.reply_text(message)
             logger.info(f'Created {coupon}')
 
