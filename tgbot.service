@@ -3,12 +3,12 @@ Description=Telegram Bot
 After=network.target
 
 [Service]
-User=user
-Group=user
+User=root
+Group=root
 
-WorkingDirectory=/home/user/tele_bot/
-Environment="PYTHONPATH=/home/user/tele_bot/"
-ExecStart=/home/user/tele_bot/.venv/bin/python /home/user/tele_bot/ubuntu18/main.py
+WorkingDirectory=/home/wc_coupon_tgbot/
+Environment="PYTHONPATH=/home/wc_coupon_tgbot/"
+ExecStart=/home/wc_coupon_tgbot/env/bin/python /home/wc_coupon_tgbot/wc_coupon_tg_bot.py
 
 [Install]
 WantedBy=multi-user.target
