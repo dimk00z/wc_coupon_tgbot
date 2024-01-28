@@ -15,6 +15,10 @@ from utils.sender import CouponSender
 from utils.settings import TelegramSettings, get_telegram_settings, get_wc_settings
 
 
+class ForbiddenError(Exception):
+    """Raised when forbidden."""
+
+
 async def start(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE,
@@ -42,6 +46,10 @@ async def echo(
     """Echo the user message."""
 
     assert update.message and update.message.text
+    if str(update.message.chat_id) not in get_telegram_settings().users_id:
+        raise ForbiddenError(
+            f"Forbidden user {update.message.chat_id}",
+        )
     coupon: Coupon = CouponCreator(message=update.message.text)()
     logger.info(
         "{chat_id}: {coupon} created",
