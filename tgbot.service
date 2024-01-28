@@ -6,9 +6,9 @@ After=network.target
 User=root
 Group=root
 
-WorkingDirectory=/home/wc_coupon_tgbot/
-Environment="PYTHONPATH=/home/wc_coupon_tgbot/"
-ExecStart=/home/wc_coupon_tgbot/env/bin/python /home/wc_coupon_tgbot/wc_coupon_tg_bot.py
+WorkingDirectory=/home/bots/wc_coupon_tgbot/
+Environment="PYTHONPATH=/home/bots/wc_coupon_tgbot/"
+ExecStart=/home/bots/wc_coupon_tgbot/env/bin/python /home/bots/wc_coupon_tgbot/wc_coupon_tg_bot.py
 
 [Install]
 WantedBy=multi-user.target

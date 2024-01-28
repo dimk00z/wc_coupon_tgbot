@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "wc-coupon-tgbot"
+version = "0.1.0"
+description = ""
+authors = ["Dmitriy <dimk00z@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+transliterate = "^1.10.2"
+pydantic = "^2.5.3"
+python-telegram-bot = "^20.7"
+httpx = "0.25.2"
+pydantic-settings = "^2.1.0"
+loguru = "^0.7.2"
+aiofiles = "^23.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
