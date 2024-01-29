@@ -25,6 +25,7 @@ async def start(
 ) -> None:
     """Send a message when the command /start is issued."""
     user = update.effective_user
+    assert update.message and user
     await update.message.reply_html(
         rf"Hi {user.mention_html()}!",
         reply_markup=ForceReply(selective=True),
@@ -36,6 +37,7 @@ async def help_command(
     context: ContextTypes.DEFAULT_TYPE,
 ) -> None:
     """Send a message when the command /help is issued."""
+    assert update.message
     await update.message.reply_text("Name {amount}")
 
 
